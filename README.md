@@ -216,6 +216,15 @@ for each type of chart.
 | setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
 | setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |
 
+#### LivewireTimelineChart
+
+| Method | Description |
+|--------|-------------|
+| addPoint(string $title, double $value (event start timestamp), double $value (event end timestamp), array $extras = []) | Adds a point to the area chart. `$extras` is forwarded on click event |
+| withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
+| setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
+| setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |
+
 ## Advanced Usage - Integrating Scripts
 
 The directive `@livewireChartsScripts` adds a `script` tag that includes `public/vendor/livewire-charts/app.js`.

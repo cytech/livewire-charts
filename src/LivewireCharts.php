@@ -8,6 +8,7 @@ use Asantibanez\LivewireCharts\Models\AreaChartModel;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
+use Asantibanez\LivewireCharts\Models\TimelineChartModel;
 
 class LivewireCharts
 {
@@ -23,6 +24,17 @@ class LivewireCharts
             ->multiLine();
     }
 
+    public function timelineChartModel()
+    {
+        return (new TimelineChartModel)
+            ->singleLine();
+    }
+
+    public function multiTimelineChartModel()
+    {
+        return (new TimelineChartModel)
+            ->multiLine();
+    }
     public function columnChartModel()
     {
         return (new ColumnChartModel)
