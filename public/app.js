@@ -787,11 +787,31 @@ var timelineChart = function timelineChart() {
           intersect: false,
           inverseOrder: false,
           custom: function custom(_ref2) {
+            var _w$config$series$seri, _w$config$series$seri2, _w$config$series$seri3;
+
             var series = _ref2.series,
                 seriesIndex = _ref2.seriesIndex,
                 dataPointIndex = _ref2.dataPointIndex,
                 w = _ref2.w;
-            return '<div class="arrow_box">' + "<span>" + new Date(w.globals.seriesRangeStart[seriesIndex][dataPointIndex]).toDateString() + ': ' + (w.globals.seriesRangeEnd[seriesIndex][dataPointIndex] - w.globals.seriesRangeStart[seriesIndex][dataPointIndex]) / 60 / 1000 + ' Minutes, ' + w.config.series[seriesIndex].data[dataPointIndex].extras.kcals + ' kcals' + "<br>" + w.config.series[seriesIndex].data[dataPointIndex].extras.type + "</span>" + '</div>';
+            var units = (_w$config$series$seri = w.config.series[seriesIndex].data[dataPointIndex].extras.units) !== null && _w$config$series$seri !== void 0 ? _w$config$series$seri : '';
+            var unitstr = (_w$config$series$seri2 = w.config.series[seriesIndex].data[dataPointIndex].extras.unitstr) !== null && _w$config$series$seri2 !== void 0 ? _w$config$series$seri2 : '';
+            var extype = (_w$config$series$seri3 = w.config.series[seriesIndex].data[dataPointIndex].extras.type) !== null && _w$config$series$seri3 !== void 0 ? _w$config$series$seri3 : '';
+
+            if (extype.length > 45) {
+              extype = extype.substring(0, 45) + '...';
+            }
+
+            var start = w.globals.seriesRangeStart[seriesIndex][dataPointIndex];
+            var end = w.globals.seriesRangeEnd[seriesIndex][dataPointIndex];
+            var startdate = new Date(start); //correct js applying timezone when creating date object
+
+            startdate.setMinutes(startdate.getMinutes() + startdate.getTimezoneOffset());
+            return '<div class="arrow_box">' + "<span>" + startdate.toLocaleDateString(undefined, {
+              weekday: 'short',
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            }) + ': ' + (end - start) / 60 / 1000 + ' Minutes, ' + units + ' ' + unitstr + "<br>" + extype + "</span>" + '</div>';
           },
           fillSeriesColor: false,
           //theme: 'light',

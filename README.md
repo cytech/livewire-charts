@@ -220,7 +220,7 @@ for each type of chart.
 
 | Method | Description |
 |--------|-------------|
-| addPoint(string $title, double $value (event start timestamp), double $value (event end timestamp), array $extras = []) | Adds a point to the area chart. `$extras` is forwarded on click event |
+| addPoint(string $title, double $value (event start timestamp), double $value (event end timestamp), array $extras = []) | Adds an event to the timeline chart. `$extras` is forwarded on click event - available 'units' => TOOLTIP UNITS, 'unitstr' => TOOLTIP UNIT STRING, 'color' => ROW ITEM COLOR, 'type' => TOOLTIP TYPE STRING
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
 | setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
 | setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |

@@ -56,8 +56,8 @@ class TimelineChartModel extends BaseChartModel
         $this->data->push([
             'x' => $title,
             'y' => [$svalue, $evalue],
-            'fillColor' => $extras['color'],
-            'strokeColor' => $extras['color'],
+            'fillColor' => $extras['color'] ?? '#0000FF',
+            'strokeColor' => $extras['color'] ?? '#0000FF',
             'extras' => $extras,
         ]);
 

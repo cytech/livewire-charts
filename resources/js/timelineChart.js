@@ -86,16 +86,30 @@ const timelineChart = () => {
                     intersect: false,
                     inverseOrder: false,
                     custom: function ({series, seriesIndex, dataPointIndex, w}) {
+                        let units = w.config.series[seriesIndex].data[dataPointIndex].extras.units ?? ''
+                        let unitstr = w.config.series[seriesIndex].data[dataPointIndex].extras.unitstr ?? ''
+                        let extype = w.config.series[seriesIndex].data[dataPointIndex].extras.type ?? ''
+                        if (extype.length > 45) {
+                            extype = extype.substring(0, 45) + '...'
+                        }
+                        let start = w.globals.seriesRangeStart[seriesIndex][dataPointIndex]
+                        let end = w.globals.seriesRangeEnd[seriesIndex][dataPointIndex]
+                        let startdate = new Date(start)
+                        //correct js applying timezone when creating date object
+                        startdate.setMinutes(startdate.getMinutes() + startdate.getTimezoneOffset())
                         return (
                             '<div class="arrow_box">' +
                             "<span>" +
-                            new Date(w.globals.seriesRangeStart[seriesIndex][dataPointIndex]).toDateString()
+                            startdate.toLocaleDateString(undefined, {
+                                weekday: 'short',
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                            })
                             + ': ' +
-                            (w.globals.seriesRangeEnd[seriesIndex][dataPointIndex] -
-                                w.globals.seriesRangeStart[seriesIndex][dataPointIndex]) / 60 / 1000 + ' Minutes, ' +
-                            w.config.series[seriesIndex].data[dataPointIndex].extras.kcals + ' kcals' +
+                            (end - start) / 60 / 1000 + ' Minutes, ' + units + ' ' + unitstr +
                             "<br>" +
-                            w.config.series[seriesIndex].data[dataPointIndex].extras.type +
+                            extype +
                             "</span>" +
                             '</div>'
                         );
@@ -177,6 +191,5 @@ const timelineChart = () => {
         }
     }
 }
-
 
 export default timelineChart
