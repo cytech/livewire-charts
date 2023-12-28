@@ -1,5 +1,7 @@
 # Changelog
 
+## 2.5.0 timelinechart - 2023-12-28
+
 ## 2.5.0 - 2023-02-01
 - Added tooltip override via `extras.tooltip`
 
