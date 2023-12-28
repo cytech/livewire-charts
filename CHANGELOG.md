@@ -1,5 +1,7 @@
 # Changelog
 
+## timelinechartv3 fork 3.0.0 - 2023-12-28
+- merge livewire-charts master v3.0.0
 
 ## 3.0.0 - 2023-07-25
 - Added Livewire v3 support
