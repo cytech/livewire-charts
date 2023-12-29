@@ -25,7 +25,8 @@ const timelineChart = () => {
 
             const series = [{
                 name: title,
-                data: data.map(item => item.value),
+                // data: data.map(item => item.value),
+                data: data,
             }]
 
             const categories = component.get('timelineChartModel.xAxis.categories').length > 0
