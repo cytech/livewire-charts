@@ -1,3 +1,5 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
+
 const timelineChart = () => {
     return {
         chart: null,
@@ -19,8 +21,11 @@ const timelineChart = () => {
             const data = component.get('timelineChartModel.data');
             const onPointClickEventName = component.get('timelineChartModel.onPointClickEventName');
             const sparkline = component.get('timelineChartModel.sparkline');
+            const jsonConfig = component.get('timelineChartModel.jsonConfig');
+
             const series = [{
-                data: data
+                name: title,
+                data: data.map(item => item.value),
             }]
 
             const categories = component.get('timelineChartModel.xAxis.categories').length > 0
@@ -43,7 +48,7 @@ const timelineChart = () => {
                     animations: {enabled: animated},
 
                     events: {
-                        markerClick: function (event, chartContext, {dataPointIndex}) {
+                        markerClick: function(event, chartContext, { dataPointIndex }) {
                             if (!onPointClickEventName) {
                                 return
                             }
@@ -57,6 +62,8 @@ const timelineChart = () => {
                 dataLabels: dataLabels,
 
                 stroke: component.get('timelineChartModel.stroke') || {},
+
+                theme: component.get('timelineChartModel.theme') || {},
 
                 title: {
                     text: title,
@@ -186,10 +193,11 @@ const timelineChart = () => {
                 },
             };
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }
 }
+
 
 export default timelineChart
