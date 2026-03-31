@@ -1,5 +1,10 @@
 # Changelog
 
+## timelinechartv4 fork 4.2.0 - 2025-12-18
+- merge livewire-charts master v4.2.0
+- Support for Laravel 13
+- Support for Livewire 4
+
 ## timelinechartv3 fork 4.1.1 - 2025-03-13
 - merge livewire-charts master v4.1.0
 
