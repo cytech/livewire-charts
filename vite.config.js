@@ -1,20 +1,13 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
+
 
 export default defineConfig({
     plugins: [
         laravel([
-            //'resources/css/app.css',
             'resources/js/app.js',
         ]),
     ],
-    targets: [
-        {
-            src: 'public/build/assets/app.js',
-            dest: '/home/dave_albright/Program_Data_Local/Development/git/DEB-Log/public/vendor/livewire-charts/app.js',
-            rename: { stripBase: true },
-        },
-        ],
     build: {
         rollupOptions: {
             output: {
