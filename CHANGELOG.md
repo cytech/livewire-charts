@@ -2,7 +2,7 @@
 
 ## timelinechartv4 fork 4.3.0 - 2026-08-24
 - convert laravel-mix to vite
-- apexcharts to v6
+- apexcharts to v7
 
 ## timelinechartv4 fork 4.2.0 - 2025-12-18
 - merge livewire-charts master v4.2.0
